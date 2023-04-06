@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 在匿名函数中this指向永远是window
+        name = '李'
+        var arr = {
+            name: '三',
+            fn: function () {
+                let _this=this
+                return function () {
+                    console.log(_this.name);
+                }
+              
+            }
+        }
+      console.log(  arr.fn()());
+        // console.log(arr.fn()());
+    </script>
+</body>
+
+</html>

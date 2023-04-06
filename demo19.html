@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 什么是构造函数 通过new 关键字来调用的函数称为构造函数 -->
+    <script>
+        let obj = new Object();
+        // 字面量
+        var obj2 = {}
+        function Star(uname, age) {
+            this.uname = uname
+            this.age = age
+            this.sing = function () {
+                console.log('唱歌');
+            }
+        }
+ var ldh=       new Star('刘德华',12)
+// console.log(ldh);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .box1{
+            height: 300px;
+            width: 100px;
+            background-color: orange;
+        }
+        .box2{
+            width: 100px;
+            height: 300px;
+            background-color: orangered;
+        }
+    </style>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <script>
+// // let div= document.querySelector('div')
+
+//         // 通过document.documentElement.scrollTop 可以获取到滚动条滚动的具体位置
+//         window.addEventListener('scroll',function(){
+//         //   console.log(document.documentElement.scrollTop);
+// document.documentElement.scrollTop=500
+//         })
+let box2= document.querySelector('.box2')
+// box2.addEventListener('scroll',function(){
+//   console.log(  offsetTop);
+// })
+// 获取box2盒子到顶部的距离
+console.log(box2.offsetTop);
+    </script>
+</body>
+</html>

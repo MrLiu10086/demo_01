@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .content {
+            width: 500px;
+
+            margin: auto;
+            border: 1px solid;
+        }
+
+        .title {
+            width: 500px;
+            height: 20px;
+            line-height: 20px;
+
+        }
+
+        .matter {
+            margin-top: 20px;
+            width: 500px;
+            background-color: red;
+        }
+
+        ul li {
+            list-style: none;
+        }
+    </style>
+</head>
+
+<body>
+    <textarea class="textarea" placeholder="请输入内容"></textarea>
+
+    <div>0/100</div>
+    <button class="btn">发布</button>
+    <ul>
+
+    </ul>
+    <script>
+        // 富文本框
+        let textarea = document.querySelector('.textarea')
+        let div = document.querySelector('div')
+        let ul = document.querySelector('ul')
+        // console.log(textarea);
+
+        let tex = []
+        textarea.addEventListener('input', function () {
+            // console.log(this.value);
+            tex = this.value.trim()
+            div.innerHTML = `${tex.length}/100`
+
+
+        })
+        // div.innerHTML=`${tex.length}`
+
+        // 表单框
+        // let inp=document.querySelector('input')
+        // inp.addEventListener('input',function(){
+        //     console.log(inp.value);
+        // })
+        let btn = document.querySelector('.btn')
+        btn.addEventListener('click', function () {
+
+            if (tex.length === 0) {
+                alert('输入的内容不能为空')
+                textarea.value = ''
+                tex = textarea.value === '' ? tex = '' : ''
+                div.innerHTML = `${tex.length}/100`
+                return
+            }
+            if (tex.length > 100) {
+                alert('输入内容大于范围')
+                return
+            }
+            // 点击发布后创建节点
+            let li = document.createElement('li')
+            li.innerHTML = `
+<div class="content">
+    <div class="title">头像</div>
+    <div class="matter">${tex}</div>
+</div>
+`
+            ul.appendChild(li)
+            // 富文本框内容
+            textarea.value = ''
+            tex = textarea.value === '' ? tex = '' : ''
+
+
+            div.innerHTML = `${tex.length}/100`
+        })
+
+
+        textarea.addEventListener('keyup', function (e) {
+            if (e.key === "Enter") {
+                btn.click()
+            }
+
+
+        })
+// insertBefore
+    </script>
+</body>
+
+</html>

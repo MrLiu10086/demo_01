@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+<li></li>
+    </ul>
+    <script>
+        // appendChild (添加节点，在后面添加)
+        // insertBefore(要插入的元素，在哪个元素前插入)
+        // 获取父节点
+        const ul =document.querySelector('ul')
+        // 创建节点
+      
+       
+        // 将节点添加到父元素当中
+      
+        for(let i=0;i<5;i++){
+            let li=document.createElement('li')
+            // li.innerHTML="添加li"
+            ul.appendChild(li)
+            let img =document.createElement('img')
+            let div=document.createElement('div')
+            li.appendChild(img)
+            li.appendChild(div)
+          
+            img.src="https://tse1-mm.cn.bing.net/th/id/OIP-C.7KW5GT7NQ8yUGlBbCHEm0gHaNK?pid=ImgDet&rs=1"
+        }
+        // ul.insertBefore(li,ul.children[0])
+
+    </script>
+</body>
+</html>

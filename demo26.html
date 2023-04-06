@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>点击</button>
+    <div class="box1">
+        <div id="scroll_bar"></div>
+        <div class="box">
+
+            <p class="content">我是内容</p>
+            <p class="content">我是内容</p>
+            <p class="content">我是内容</p>
+
+
+            <p class="content">我是内容</p>
+            <p class="content">我是内容</p>
+            <p class="content">我是内容</p>
+            <p class="content">我是内容</p>
+
+            <p class="content">我是内容</p>
+            <p class="content">我是内容</p>
+            <p class="content">我是内容</p>
+
+            <p class="content">我是内容</p>
+            <p class="content">我是内容</p>
+            <p class="content">我是内容</p>
+            <p class="content">我是内容</p>
+            <p class="content">我是内容</p>
+            <p class="content">我是内容</p>
+
+            <p class="content">我是内容</p>
+            <p class="content">我是内容</p>
+            <p class="content">我是内容</p>
+            <p class="content">我是内容</p>
+            <p class="content">我是内容</p>
+
+
+            <p class="content">我是内容</p>
+            <p class="content">我是内容</p>
+            <p class="content">我是内容</p>
+            <p class="content">我是内容</p>
+            <p class="content">我是内容</p>
+            <p class="content">我是内容</p>
+            <p class="content">我是内容</p>
+
+
+
+            <p class="content">我是内容</p>
+            <p class="content">我是内容</p>
+            <p class="content">我是内容</p>
+            <p class="content">我是内容</p>
+            <p class="content">我是内容</p>
+            <p class="content">我是内容</p>
+
+            <p class="content">我是内容</p>
+            <p class="content">我是内容</p>
+
+            <p class="content">我是内容</p>
+            <p class="content">我是内容</p>
+            <p class="content">我是内容</p>
+            <p class="content">我是内容</p>
+            <p class="content">我是内容</p>
+            <p class="content">我是内容</p>
+
+            <p class="content">我是内容</p>
+            <p class="content">我是内容</p>
+        </div>
+    </div>
+    <style>
+        #scroll_bar {
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 80px;
+            width: 6px;
+            z-index: 2222;
+            background-color: #666;
+            border-radius: 2px;
+        }
+
+        .box1 {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            /* overflow: hidden; */
+            z-index: 2;
+            /* font-size: 0; */
+        }
+
+        .box {
+            position: absolute;
+            top: 0;
+            width: 320px;
+            height: 300px;
+            overflow: hidden auto;
+            background-color: #3ff;
+        }
+
+        .content {
+            margin: 0;
+            padding: 16px 0;
+            border: 1px solid #000;
+            font-size: 32px !important;
+            top: 0;
+
+        }
+
+        .ava {
+            position: absolute;
+            bottom: 0;
+        }
+    </style>
+    <script>
+        let box = document.querySelector('.box')
+        let box1 = document.querySelector('.box1')
+        let content = document.querySelectorAll('.content')
+        let v_height = box1.offsetHeight
+        let r_height = content[0].offsetHeight * content.length
+        let scroll_bar = document.querySelector('#scroll_bar')
+        let s_height = r_height - v_height
+        //
+
+        box.onscroll = function () {
+            console.log(this.scrollTop);
+        }
+        let btn = document.querySelector('button')
+        btn.onclick = function () {
+            document.querySelector('.box').scrollTop = r_height
+            scroll_bar.style.top = box.offsetHeight - scroll_bar.offsetHeight - 1 + 'px'
+
+        }
+
+        function fun() {
+            let date = new Date()
+            let gettime = date.getTime()
+            return gettime
+        }
+        let i = 0
+        // console.log(s_height);
+        // console.log(box.offsetHeight - scroll_bar.offsetHeight);
+        // let pa = 1.3333333730697632 / s_height * v_height
+        // console.log(pa - 80);
+        console.log(s_height * v_height);
+        scroll_bar.onmousedown = function (e) {
+            i += 1
+
+            let beginY = e.clientY - scroll_bar.offsetHeight
+
+            let j = fun()
+            // console.log(gettime);
+            document.onmousemove = function (e) {
+
+                let x = fun()
+                //   console.log(  (e.clientY-beginY)-(scroll_bar.offsetHeight));
+                // console.log((r_height-box.offsetHeight));
+                // console.log();
+
+                let endX = (e.clientY - beginY) - scroll_bar.offsetHeight
+
+                if (i === 1) {
+                    let du = 0
+                    setTimeout(() => {
+                        if (x - j > 500) {
+                            // console.log('22');
+                            if (endX < 0) {
+                                endX = 0
+                            } else {
+                                let pag = (e.clientY - beginY) - scroll_bar.offsetHeight
+
+                                if (pag < 0) {
+                                    scroll_bar.style.top = 0 + 'px'
+                                    // console.log('22');
+                                    return
+                                }
+                                if (pag >= box.offsetHeight - scroll_bar.offsetHeight) {
+                                    return
+                                }
+                                scroll_bar.style.top = pag + 1 + 'px'
+                                // console.log(-31/ s_height*v_height);
+                                du = Math.abs((box.offsetHeight - r_height) / (box.offsetHeight - scroll_bar.offsetHeight) * pag)
+
+                                console.log(Math.abs((box.offsetHeight - r_height) / (box.offsetHeight - scroll_bar.offsetHeight) * pag));
+                                document.querySelector('.box').scrollTop = du
+                                // 内容高度 滚动条高度 盒子高度
+                                // console.log();
+                                // console.log(pag);
+
+                            }
+
+                            // box.style.top=pag + 'px'
+                            // console.log((e.clientY-beginY)-scroll_bar.offsetHeight-80+'px');
+
+                        }
+                    })
+                } else {
+                   
+                }
+
+
+
+
+
+                //  console.log(    document.querySelector('.box').scrollTop);
+
+            }
+
+        }
+
+        document.onmouseup = function (e) {
+            // 记录当前松开位置
+            console.log(e);
+            document.onmousemove = null
+            // console.log('22');
+
+            // // console.log('22');
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    全选框 <input type="checkbox" class="ic" >
+<input class="innn" type="checkbox" name="vehicle" value="Bike">I have a bike<br>
+<input class="innn" type="checkbox" name="vehicle" value="Car">I have a car 
+数量:<div class="count">1</div>
+<button class="jia">+</button>
+<button class="jian" disabled>-</button>
+<script>
+    // 什么是函数表达式
+// 函数表达式非常类似与函数声明，并且两者拥有几乎相同的语法
+    // 函数声明有变量提升，而函数表达式则没有
+
+// 回调函数  //将函数当作参数传递，就是回调函数
+function fn(){}
+setInterval(function(){},1000)
+setInterval(fn,1000)
+// 此时fn 就是回调函数 回头去调用的函数
+//高阶函数
+//  1、函数表达式 2、回调函数
+//  1、将函数赋值给变量
+//  2、
+// 使用this,目的是让代码简洁
+// this,指向的是他的上级
+// 以函数形式调用this指向window，以方法形式调用this指向调用方法的对象
+// 谁调用this就指向谁
+    const jia=document.querySelector('.jia')
+    const jian=document.querySelector('.jian')
+    const count=document.querySelector('.count')
+    let c=1
+    
+    jia.addEventListener('click',function(){
+        c++
+        count.innerHTML=`${c}`
+        if(c!=1){
+            jian.disabled=false
+        }
+    })
+   
+    jian.addEventListener('click',function(){
+        c--
+          count.innerHTML=`${c}`
+         
+        if(c===1){
+            jian.disabled=true
+        }
+
+    })
+const inp=    document.querySelectorAll('.innn')
+const iii=document.querySelector('.ic')
+// i.forEach(item=>{
+//     item.checked=true
+// })
+// 让所有的checked有点击事件，判断所有checked是否为ture
+
+for(let i=0;i<inp.length;i++){
+    inp[i].addEventListener('click',function(){
+        // console.log(this.checked);
+        for(let j=0;j<inp.length;j++){
+       console.log( inp[j].checked);
+       if(!inp[j].checked){
+          return
+       }
+  
+    }
+ 
+    iii.checked=true
+    })
+
+//    console.log( inp[i].checked);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box1">
+        <div class="box2"></div>
+    </div>
+    <div class="box3"></div>
+    <style>
+        .box1{
+            width: 500px;
+            height: 500px;
+            background-color: red;
+        }
+        .box2{
+            width: 200px;
+            height: 200px;
+            background-color: orange;
+        }
+        .box3{
+            width: 100px;
+            height: 100px;
+            background-color: brown;
+        }
+    </style>
+    <script>
+        // 事件冒泡 
+        // 事件冒泡的产生 子盒子在父盒子的区域内会有一个事件冒泡
+        // 在子盒子中产生事件元素时会有产生冒泡，接着看父元素中是否有事件元素，如果有则继续产生冒泡，没有则退出冒泡
+
+        //   如果要阻止下一次事件冒泡则需要在子盒子中使用 stopPropagation()  (对象属性元素)
+     
+    //  事件监听 三个参数  1、事件类型 2、回调函数 3、捕获事件 true开启  false关闭，默认为关闭
+        let box1=        document.querySelector('.box1')
+    let box2=document.querySelector('.box2')
+    let box3=document.querySelector('.box3')
+
+    box1.addEventListener('click',function(){
+        alert('父亲')
+    })
+    box2.addEventListener('click',function(e){
+        alert('儿子')
+        e.stopPropagation()
+    })
+    box3.addEventListener('click',function(){
+        alert('儿子')
+    })
+    </script>
+</body>
+</html>

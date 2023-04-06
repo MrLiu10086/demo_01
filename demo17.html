@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text">
+    <button>添加</button>
+    <ul></ul>
+
+    <script>
+        let ul = document.querySelector('ul')
+        let btn = document.querySelector('button')
+        let input = document.querySelector('input')
+        let arr
+        // 进入页面后将数据保存在本地存储当中
+
+        //    保存到本地存储
+        let obj = [
+            {
+                username: "漳卅"
+            }
+        ]
+
+        let data = localStorage.getItem('data')
+        if (data) {
+
+            arr = JSON.parse(localStorage.getItem('data'))
+        } else {
+            localStorage.setItem('data', JSON.stringify(obj))
+        }
+        arr = JSON.parse(localStorage.getItem('data'))
+
+        function getLocalData() {
+            let arr= JSON.parse(localStorage.getItem('data'))
+            ul.innerHTML = ''
+          
+            for (let i = 0; i < arr.length; i++) {
+                let li = document.createElement('li')
+                li.innerHTML = `姓名:${arr[i]['username']}`
+                ul.appendChild(li)
+            }
+        }
+
+        getLocalData()
+
+        btn.addEventListener('click', function () {
+            let arr = JSON.parse(localStorage.getItem("data"))
+            // console.log(data);
+
+            arr.push({
+                username: input.value
+            })
+
+            localStorage.setItem('data', JSON.stringify(arr))
+            input.value=''
+               getLocalData()
+
+        })
+
+        //读取：  将数据存储到本地存储当中，将本地存储数据渲染到页面
+
+// 添加:读取本地存储数据，将本地存储数据保存到一个容器中
+
+    </script>
+</body>
+
+</html>

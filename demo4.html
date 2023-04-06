@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      
+    </style>
+</head>
+<body>
+    <button>点击</button>
+    <button class="bb">兄弟节点</button></button>
+    <ul>
+        <li>列表</li>
+        <li>列表</li>
+        <li class="two">列表</li>
+        <li>列表</li>
+        <li>列表</li>
+    </ul>
+    <script>
+    // 找到上一级父节点 如果没有则返回null parentNode
+        //  父节点.children （找到所有子节点，返回伪数组）
+        //  children 仅获得子元素节点 childNodes 获取所有子元素节点（空格、注释、换行）
+        // 伪数组，没有数组中的方法属性、伪数组长度不能改变
+const btn= document.querySelector('button')
+const two =document.querySelector('.two')
+const ul=document.querySelector('ul')
+const  bb=document.querySelector('.bb')
+bb.addEventListener('click',function(){
+    // nextElementSibling （上一个兄弟节点）
+    // previousElementSibling （下一个兄弟节点）
+    two.nextElementSibling.style.color="red"
+    two.previousElementSibling.style.color="red"
+   
+})
+
+btn.addEventListener('click',function(){
+// ul.children.style.color="red"
+// console.log('222');
+let list=ul.children
+for(let i=0;i<list.length;i++){
+    list[i].style.color="red"
+    
+}
+})
+    </script>
+</body>
+</html>

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <input type="text" > -->
+    <span></span>
+    <!-- <div class="title">张三</div> -->
+   <input type="text" value="请输入" placeholder="请输入">
+   <!-- <button disabled>点击</button> -->
+    <!-- <div  ></div> -->
+    <button disabled>同意(5)</button>
+    <div class="box">
+<div class="box1">张三</div>
+
+    </div>
+    <div class="mz">张三</div>
+    <button class="dd" disabled>随机点名</button>
+    <!-- <button class=""></button> -->
+    <br>
+    <input type="text" class="inpu">
+    <ul class="list">
+        <li>全部商品</li>
+        <li>小米</li>
+        <li>小米</li>
+        <li>小米</li>
+    </ul>
+
+<textarea></textarea>
+<div class="tt">0/200</div>
+<button class="fb">发布</button>
+<input  type="checkbox" name="vehicle" value="Bike">I have a bike<br>
+<input type="checkbox" name="vehicle" value="Car">I have a car 
+    <script>
+        let cc=[]
+const te= document.querySelector('textarea')
+const tt= document.querySelector('.tt')
+const fb= document.querySelector('.fb')
+te.addEventListener('input',function(){
+   
+ if(cc.length!=200){
+    cc.push(te.value)
+ tt.innerHTML=`${cc.length}/200`
+ }
+})
+fb.addEventListener('click',function(){
+        // if(cc.length>200){
+        //     alert('你输入的内容超出范围')
+        // }
+        // console.log(cc);
+        document.write(`
+        ${cc[cc.length-1]}
+        `)
+    })
+// console.log(cc.length);
+// 表单事件
+const inp= document.querySelector('.inpu')
+const list= document.querySelector('.list')
+inp.addEventListener('mouseenter',function(){
+
+    list.style.display="block"
+  inp.classList.add('active')
+
+})
+
+inp.addEventListener('mouseleave',function(){
+ 
+
+    list.style.display="none"
+  inp.classList.remove('active')
+
+
+})
+
+
+
+
+
+console.log(inp);
+inp.addEventListener('click',function(){
+  
+})
+        //  什么是事件监听，比如用户点击按钮就属于事件监听
+        let mzarray=['三','三','小明','小红','小米','小乔','李星','小米']
+        let abc=[]
+// 点击事件两种写法
+// onclick
+// addEventListener
+
+// 名字随机案例
+const mz =document.querySelector('.mz')
+let m=0
+let mm
+let kaiq=true
+
+function ff(){
+   mm= setInterval(function(){
+    m = parseInt(Math.random()*mzarray.length)
+    mz.innerHTML=mzarray[m]
+  
+},50)
+}
+ff()
+        const dd=   document.querySelector('.dd')
+        dd.disabled=false
+dd.addEventListener('click',function(){
+kaiq=!kaiq
+if(kaiq===false ){
+    mzarray.splice(m,1)
+  if(!mzarray.length){
+    dd.disabled=true
+    mz.innerHTML=''
+  }
+   }
+    kaiq===false?  clearInterval(mm) :ff();
+})
+// 勒省特
+        //  案例
+        const box    =   document.querySelector('.box1')
+// box.style.backgroundColor='aqua'
+let listArr=[
+    {
+        color:'red',
+        title:"张三"
+    },
+    {
+        color:"rgb(255, 230, 0)",
+        title:"小明"
+    },
+    {
+        color:"rgb(255, 230, 0)",
+        title:"黄总"
+    },
+    {
+        color:"rgb(255, 230, 0)",
+        title:"张飞"
+    }
+]
+let i=0
+// box.innerHTML=listArr[i]['title']
+// console.log(listArr[i]['title']);
+// fun()
+
+// setInterval(fun,1000)
+// setInterval({
+
+// })
+// 点和中括号方式的区别
+// 1.点方法后面跟的必须是一个指定的属性名称，中括号里面可以是变量
+// 2.中括号里面的属性可以是数字，点方法后面的属性名不能是数字
+// 3.动态为对象添加属性是，只能用中括号
+
+for(let i=0;i<listArr.length;i++){
+console.log(listArr[i]['title']);
+}
+
+
+function fun(){
+   const p= setInterval(function(){
+    i++
+    box.innerHTML=listArr[i]['title']
+    // if(i===listArr.length-1){
+    //     i=0
+    //     // box.innerHTML=listArr[i]['title']
+    // }
+    i===listArr.length-1 ? i=0:i
+        box.onmouseenter=function(){
+            clearInterval(p)
+        }
+        box.onmouseleave =function(){
+            fun()
+        }
+    },1000)
+}
+fun()
+ //  const r= document.querySelector('input')
+// const bu= document.querySelector('button')
+// bu.disabled=false
+// let count=5;
+
+// // 重复执行，规定时间内
+// const index= setInterval(function(){
+// count-=1
+// document.write(count)
+// if(count===0){
+//     clearInterval(index)
+// }
+// },1000)
+const btn = document.querySelector('button')
+let c=5
+
+// btn.innerHTML=
+let index= setInterval(() => {
+ 
+   
+    if(c!==1){
+        c-=1
+        btn.innerHTML=`同意(${c})`
+}else{
+    clearInterval(index)
+    btn.innerHTML=`同意`
+    btn.disabled=false
+}
+//  document.write(c-=1)
+
+}, 1000);
+// clearInterval(index)
+
+// setTimeout 到指定时间内执行，但只会执行一次
+        // innerText 修改 标签元素内容，不会解析标签元素
+// innerHTML 修改标签元素内容，同时会解析标签元素
+        // 通过  document.querySelector 可以获取 html标签元素中DOM对象或者是css选择器中DOM对象，可以直接操作
+// const div=        document.querySelector('.title')
+// //   document.querySelectorAll 获取所有匹配的标签属性 或css选择器,返回的是伪数组，不能直接操作，需要遍历得到一项元素
+// // const li= document.querySelectorAll('ul li')
+// console.log(div);       
+// // console.log(li); 
+// const list=document.querySelectorAll('.nav li')
+// console.log(list);
+// div.innerHTML=`
+// <p>你好</p>
+// `
+// for(let i=0;i<list.length;i++){
+//     // document.write(list[i])
+//     console.log(list[i]);
+    
+// }
+
+// const list =['张飞','关羽','小乔','貂蝉']
+// let  arr =parseInt(Math.random()*list.length)
+// const sp=document.querySelector('span')
+// sp.innerHTML=list[arr]
+// list.splice(arr,1)
+
+// 这两个都属于定时器，但不同的是 setTimeout 执行完后不在执行 setInterval 执行完成后还会继续执行
+// setTimeout()
+// setInterval()
+
+//       function fun(arr){
+        //         let sum=0
+        //    for(let i=0;i<arr.length;i++){
+        //      sum+=arr[i]
+        //    }
+        //    console.log(sum)
+        //       }
+        //       fun([1,2,3,4])
+        // 在块级级作用域中使用var定义变量是全局作用域
+//         (function (date) {
+//             let h = parseInt(date / 60 / 60 % 24)
+//             let m 
+//             m= parseInt(date / 60 % 60)<10 ?'0'+parseInt(date / 60 % 60):parseInt(date / 60 % 60)
+//             let s = parseInt(date % 60)
+         
+//             document.write(`
+// ${date}转换为${h}小时${m}分钟${s}秒
+// `)
+//         })(+prompt('请输入秒数'))
+      
+// ( function(){})()
+// let arr=[
+//     {
+//         name:"小明",
+//         age:18,
+//         sex:"男",
+//         jia:"河北"
+//     }
+// ]
+// for(let i=0 ;i<arr.length;i++){
+//     console.log(arr[i].name);
+//     // for(let key in arr[i]){
+//     //     document.write(`
+//     //     ${arr[i][key]}
+//     //     `)
+//     // }
+// }
+// let arr=['赵云','黄总','关羽']
+// let a=1.999
+// console.log(Math.max(...arr));
+// 默认随机数 0~1 但不包括1
+
+// let name=Math.floor(Math.random()*(10-5+1)+5)
+// 简单数据类型按值存储
+// 简单数据类型存储在栈里面并开辟一个地址可以通过他的变量来获取数据，而引用数据类型同样的也是开辟一个地址但不同的是引用类型是通过地址去寻找堆于栈相同的地址获取数据的
+// console.log(arr[name]);
+// console.log(name);
+// const div= document.querySelector('div')
+// div.className='active'
+// div.classList.add('active')
+// className  添加一个class 样式属性，如果有则会覆盖
+// classList 有原有的样式属性，多添加一个样式属性，不会覆盖原有的样式属性
+</script>
+</body>
+<style >
+    .mz{
+        width: 100px;
+        height: 20px;
+        text-align: center;
+        border: 1px solid;
+    }
+    *{
+        padding: 0;
+        margin: 0;
+    }
+   input{
+    outline: none;
+   }
+div{
+    width: 200px;
+    height: 200px;
+background-color: rgb(255, 89, 0);
+}
+/* .active{
+    width: 300px;
+    height: 300px;
+    background-color: red;
+} */
+.box{
+    width: 500px;
+    height: 500px;
+    margin: auto;
+}
+.box1{
+  
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    background-color: red;
+    top: 50%;
+    margin-top: -200px;
+    margin-left: 150px;
+ 
+
+}
+.active{
+    border: 1px solid goldenrod;
+ outline: none;
+}
+ul{
+   width: 164px;
+   box-sizing: border-box;
+text-align: center;
+border: 1px solid goldenrod;
+border-top: none;
+display: none;
+}
+ul li:hover{
+  
+
+    background-color: azure;
+}
+</style>
+</html>

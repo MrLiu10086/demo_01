@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>点击</button>
+    <ul class="list">
+        <li>公告</li>
+        <li>规则</li>
+        <li>安全</li>
+    </ul>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <style>
+        div {
+            width: 100px;
+            height: 200px;
+            background-color: orange;
+            margin-left: 50px;
+            display: flex;
+            display: inline-block;
+            display: none;
+        }
+
+        ul {
+            width: 200px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        ul li {
+            list-style: none;
+            cursor: pointer;
+        }
+
+        .active {
+            color: orange;
+            border-bottom: 1px solid orange;
+        }
+    </style>
+    <script>
+        // 点击后让第一个 样式删掉
+        const l = document.querySelector('.list')
+        const list = l.querySelectorAll('li')
+        const di = document.querySelectorAll('div')
+const btn =       document.querySelector('button')
+// btn 事件源    click事件类型  function事件函数
+btn.addEventListener('click',function(){})
+        let ii = 0  //初始值
+        console.log(list);
+        // 遍历所有 ul li 
+        for (let i = 0; i < list.length; i++) {
+            // //   开始默认颜色
+            list[ii].classList.add('active')
+            // 让每个li 添加点击事件 //用户未点击则不会执行
+            list[i].addEventListener('click', function () {
+
+                // 点击删除掉第一个li样式
+                list[ii].classList.remove('active')
+                // 添加到新的li身上
+                this.classList.add('active')
+                // 将添加到li的下标值赋给初始值
+              
+                // 完整写法
+                // for (let j = 0; j < di.length; j++) {
+                //     di[ii].style.display = "none"
+                //     di[i].style.display = "block"
+
+                // }
+
+                // 简写
+                
+                di[ii].style.display = "none"
+                di[i].style.display = "block"
+                ii = i
+                // 
+
+            })
+
+            // ii=list.length
+        }
+        // 默认tab栏显示内容
+        // 完整写法
+        // for (let j = 0; j < di.length; j++) {
+        //     di[ii].style.display = "block"
+
+        // }
+        // 简写
+     di[ii].style.display = "block"
+    </script>
+</body>
+
+</html>

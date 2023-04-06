@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>点击</button>
+<script>
+    
+//   let code=prompt('输入')
+
+//   let arr=[]
+//   arr.push(code)
+//     var obj={
+//         name:"张"
+//     }
+//     function fn(arr){
+//         console.log(this);
+//         console.log(arr);
+//     }
+//     // apply 第一个参数：改变this指向，第二个参数：为数组
+//     fn.bind(obj,arr)
+
+let btn=document.querySelector('button')
+    var obj={
+        name:"张"
+    }
+    function fn(a,b){
+        console.log(this);
+console.log(a,b);    
+    }
+    // 绑定不会调用原来函数，可以改变this指向
+    // 返回的是原函数改变this之后产生的新函数
+    // 函数不需要立即调用，又想改变this指向，则使用bind
+let f= fn.bind(obj,1,2)
+ f()
+ function ac(){
+    this.disabled=true
+    setTimeout(function(){
+        this.disabled=false
+    }.bind(this),1000)
+ }
+ btn.onclick=ac
+</script>
+</body>
+</html>

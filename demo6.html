@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>张三</li>
+        <li>
+            <button></button>
+        </li>
+        <li></li>
+        <li></li>
+    </ul>
+    <script>
+let ul=document.querySelector('ul')
+// cloneNode 空默认为false 如果是false 则不克隆后代节点
+// 后代节点指定是：父节点中的子节点
+// 如果是true 则克隆后代节点 
+let newUl= ul.cloneNode(true)
+document.body.appendChild(newUl)
+
+
+// 删除元素：必须通过父元素删除子元素
+ul.removeChild(ul.children[0])
+// ul.insertBefore(子元素，那个元素的前面)
+// document.querySelector(newUl)
+</script>
+</body>
+</html>

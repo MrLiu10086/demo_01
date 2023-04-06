@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box1">
+        <div id="scroll_bar"></div>
+        <div class="box">
+            <p class="content">我是内容</p>
+            <p class="content">我是内容</p>
+            <p class="content">我是内容</p>
+            <p class="content">我是内容</p>
+            <p class="content">我是内容</p>
+            <p class="content">我是内容</p>
+            <p class="content">我是内容</p>
+            <p class="content">我是内容</p>
+            <p class="content">我是内容</p>
+            <p class="content">我是内容</p>
+            <p class="content">我是内容</p>
+            <p class="content">我是内容</p>
+            <p class="content">我是内容</p>
+            <p class="content">我是内容</p>
+        </div>
+    </div>
+    <style>
+        #scroll_bar {
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 80px;
+            width: 6px;
+            z-index: 2222;
+            background-color: #666;
+            border-radius: 2px;
+        }
+
+        .box1 {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            /* overflow: hidden; */
+            z-index: 2;
+            /* font-size: 0; */
+        }
+
+        .box {
+            position: absolute;
+            top: 0;
+            width: 320px;
+            height: 300px;
+            overflow: auto;
+            background-color: #3ff;
+        }
+
+        .content {
+            margin: 0;
+            padding: 16px 0;
+            border: 1px solid #000;
+            font-size: 32px !important;
+        }
+    </style>
+    <script>
+        let box = document.querySelector('.box')
+        let box1 = document.querySelector('.box1')
+        let content = document.querySelectorAll('.content')
+        let v_height = box1.offsetHeight
+        let r_height = content[0].offsetHeight * content.length
+        let scroll_bar = document.querySelector('#scroll_bar')
+        let s_height = r_height - v_height
+        console.log(s_height);
+        fun()
+        function fun() {
+            box.onscroll = function (e) {
+                console.log(e);
+                console.log(this.scrollTop);
+                if (r_height <= v_height) {
+                    // scroll_bar.style.display = 'none'
+                    return
+                } else {
+                    // 根据比例，求出滚动条可设置的位置
+                    let place = this.scrollTop / s_height * v_height
+                    console.log(place - 80 + 'px');
+                    console.log( this.scrollTop );
+                    console.log(place);
+                    // 限制滚动条最大高度
+                    if (place - 80 < 0) {
+                        scroll_bar.style.top = 0
+                        return
+                    }
+                    scroll_bar.style.top = place - 80 + 'px'
+                }
+            }
+        }
+
+        function getDate() {
+            let date = new Date()
+            let getime = date.getTime()
+            return getime
+        }
+        scroll_bar.onmousedown = function (e) {
+            // console.log('22', e);
+            var endy = e.clientY - scroll_bar.offsetHeight
+            document.onmousemove = function (event) {
+                // var e=event||window.event;
+
+                //3.3求出移动的距离
+
+                // fun()
+                // document.
+                // console.log(this.scrollTop);
+                let former = getDate()
+                // console.log(former);
+                // let beginX = e.clientY - scroll_bar.offsetHeight;
+                // console.log(beginX);
+                let item = setInterval(function () {
+                    let newest = getDate()
+                    let zuidate = newest - former
+                    if (zuidate >= 1000) {
+                        // fun()
+                        var endX = event.clientY - endy;
+// console.log('2');
+                        //设置边界值
+                        if (endX < 0) {
+                            endX = 0;
+                        } else if (endX >= box1.offsetHeight - scroll_bar.offsetHeight) {
+                            endX = box1.offsetHeight - scroll_bar.offsetHeight;
+                        }
+                        scroll_bar.style.top = -endX + 'px';
+                    }
+                    //    console.log('222');
+                }, 100)
+
+            }
+        }
+        scroll_bar.onmouseout = function () {
+            // clearInterval(item)
+            document.onmousemove = null;
+        }
+        // console.log(document.querySelector('#scroll_bar').scrollTop);
+
+
+    </script>
+</body>
+
+</html>
+
+
+
+<!-- 
+
+    <!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>原生滚动条</title>
+<style>
+.wrapper{
+	position: relative;
+	width: 300px;
+	height: 300px;
+	overflow:hidden;
+	z-index:2;
+	font-size: 0;
+}
+.wrapper .content{
+	margin: 0;
+	padding: 16px 0;
+	border: 1px solid #000;
+	font-size:32px !important;
+}
+.wrapper .content:nth-child(odd){
+	ackground-color: #ccc;
+}
+ 
+ 
+.box{
+	position: absolute;
+	top: 0;
+	width: 320px;
+	height: 300px;
+	overflow: hidden auto;
+	background-color:#3ff;
+}
+#scroll_bar{
+	position: absolute;
+	right: 0;
+	top: 0;
+	height: 80px;
+	width: 6px;
+	z-index:2222;
+	background-color: #666;
+	border-radius: 2px;
+}
+</style>
+</head>
+<body>
+<div class="wrapper">
+	<div id="scroll_bar"></div>
+    <div class="box">
+        <p class="content">我是内容</p>
+        <p class="content">我是内容</p>
+        <p class="content">我是内容</p>
+        <p class="content">我是内容</p>
+        <p class="content">我是内容</p>
+        <p class="content">我是内容</p>
+        <p class="content">我是内容</p>
+        <p class="content">我是内容</p>
+        <p class="content">我是内容</p>
+        <p class="content">我是内容</p>
+        <p class="content">我是内容</p>
+    </div>
+</div>
+<script>
+    const wrapper = document.getElementsByClassName('wrapper')[0]
+    const box = document.getElementsByClassName('box')[0]
+   	const contentList = document.getElementsByClassName('content')
+	const scroll_bar = document.getElementById('scroll_bar')
+	//元素可视高度
+	let v_height = wrapper.offsetHeight
+	// 元素真实高度
+	let r_height = contentList[0].offsetHeight * contentList.length
+	// 滚动条可滚动高度
+	let s_height = r_height - v_height
+	box.onscroll = function(e){
+		if(r_height <= v_height){
+			scroll_bar.style.display = 'none'
+			return
+		} else {
+            // 根据比例，求出滚动条可设置的位置
+			let place = this.scrollTop /s_height * v_height
+            // 限制滚动条最大高度
+			if(place - 80 < 0) {
+				scroll_bar.style.top = 0
+				return 
+			}
+			scroll_bar.style.top = place - 80 + 'px'
+		}
+	}
+    </script>
+</body>
+</html>
+ -->

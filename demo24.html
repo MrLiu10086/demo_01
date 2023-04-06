@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var obj = {
+            id: 1,
+            // name: 'andy',
+            // msg: {
+            //     age: 18
+            // },
+            color: ['pink', 'red']
+        };
+        var o = {};
+        // 封装函数 
+//         function deepCopy(newobj, oldobj) {
+//             // k:[] oldobj:['pink', 'red']
+//             for (var k in oldobj) {
+//                 // console.log(oldobj[k]);
+//                 let item = oldobj[k]
+// // console.log(item);
+
+//                 if (item instanceof Array) {
+//                     console.log(k);
+//                     // console.log(newobj);
+//                     // newobj[k] = []
+//                     // console.log(k);
+//                     // deepCopy(newobj[k],item)
+//                     // 如果指向赋值，会将原地址值赋值上新创建数组当中
+//                     // newobj[k] = item
+//                 }else{
+//                 //   newobj[k]=2
+//                     // console.log(newobj[k]);
+//                     // console.log(k);
+//                     // newobj[k] = item 
+//                 }
+//             }
+//         }
+//         deepCopy(o, obj);
+//         console.log(o);
+        // o.color[0]='a'
+// 遍历原数据，
+// console.log(obj);
+// 浅拷贝对象方法
+// 浅拷贝将拷贝的数据地址值赋值到另一个空间中，而另一个空间可以通过，这个地址值指向被拷贝的对象
+Object.assign(o,obj)
+console.log(o);
+    </script>
+</body>
+
+</html>

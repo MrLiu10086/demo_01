@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>点击</button>
+    <script>
+        // 获取dom元素中的对象属性
+ let btn=       document.querySelector('button')
+//  普通函数
+//  function zhang(e){
+// console.log(e);
+//  }
+
+// 函数表达式
+// let zhangs=function(e){
+// console.log(e);
+// }
+// 事件监听 第一个参数事件类型 第二个参数回调函数、函数表达式
+ btn.addEventListener('click',function(e){
+    console.log(e);
+    // event 事件对象属性 列如:button
+ })
+    
+// 无论是函数表达式还是回调函数都可以当作一个参数使用
+
+//  高阶函数
+// 1、函数表达式
+// 2、回调函数
+    </script>
+</body>
+</html>

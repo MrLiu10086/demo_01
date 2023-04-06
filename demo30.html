@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box {
+
+        height: 22px;
+        background-color: #f5f5f5;
+        border-radius: 2px;
+        margin: 20px;
+    }
+
+    .box1 {
+        width: 200px;
+        height: 22px;
+        background-color: rgb(233, 218, 10);
+text-align: center;
+color: white;
+    }
+    .action{
+        background-color: rgb(0, 66, 128);
+    }
+</style>
+
+<body>
+    <!-- 1. 文件选择框 -->
+    <input type="file" id="file1" />
+    <!-- 2. 上传文件的按钮 -->
+    <button id="btnUpload">上传文件</button>
+    <br />
+    <!-- 3. img 标签，来显示上传成功以后的图片 -->
+    <img src="" alt="" id="img" width="800" />
+    <div class="box" style="width: 500px;">
+        <div class="box1" style="width: 0%;">0%</div>
+    </div>
+    <script>
+        let btnUpload = document.querySelector('#btnUpload')
+        btnUpload.addEventListener('click', function () {
+            let files = document.querySelector("#file1").files
+            if (files.length <= 0) {
+                alert('请选择上传文件')
+            }
+            let fd = new FormData()
+            fd.append('avatar', files[0])
+            let xhr = new XMLHttpRequest()
+            // 文件上传时
+            xhr.upload.onprogress = function (e) {
+                if (e.lengthComputable) {
+                    let jidu = Math.ceil((e.loaded / e.total) * 100)
+                    document.querySelector('.box1').style.width = jidu + '%'
+                    document.querySelector('.box1').innerText = jidu + '%'
+
+                }
+            }
+            // 文件上传完时
+            xhr.upload.onload=function(){
+                document.querySelector('.box1').classList.add('action')
+            }
+            xhr.open('post', 'http://www.liulongbin.top:3006/api/upload/avatar')
+            xhr.send(fd)
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 & xhr.status === 200) {
+                    let data = JSON.parse(xhr.responseText)
+                    if (data.status === 200) {
+                        document.querySelector('#img').src = "http://www.liulongbin.top:3006" + data.url
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

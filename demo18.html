@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 声明 学生类
+        //         class stundet{
+        // // 接收参数，并返回
+        // constructor(num1,num2){
+        // this.num1=num1
+        // this.num2=num2
+        // }
+        // // 类中创建函数不需要function和逗号
+        // star(){
+        // console.log(this.num1+this.num2);
+        // }
+        //         }
+        //         // 创建 学生类
+        //         const stu=new stundet(1,2)
+        //         // 调用某个函数
+        //         stu.star()
+
+
+        // 继承
+        //         class stundet {
+        //             constructor() {
+        //                 console.log('漳卅');
+        //             }
+        // money(){
+        //     console.log('漳卅');
+        // }
+        //         }
+        // // 继承父类，但无法调用构造函数，可以通过 super调用分类值的构造函数
+        //         class Star extends stundet { }
+        //       new Star()
+
+
+        // class Father{
+        // say(){
+        //     return '张三'
+        // }
+        // }
+        // // 子类继承父类，通过子类调用普通函数于父类相同的会优先调用自身：就近原则
+        // // 解决方法:super.say() 这样就可以优先调用父类函数
+        // class Son extends Father{
+        //     say(){
+        //         // console.log('你好');
+        //        console.log( super.say());
+        //     }
+        // }
+        // new Son().say()
+
+
+        // 子类继承父类方法同时扩展自己方法
+        class Father {
+            // 接收参数，返回值
+            constructor(x, y) {
+                this.x = x
+                this.y = y
+            }
+            sum() {
+                console.log(this.x + this.y);
+            }
+        }
+
+        class Son extends Father {
+            // 接收参数，返回值
+            constructor(x, y) {
+               
+                // 利用super 调用父类构造函数
+                 // super 必须在子类this之前调用
+                super(x, y)
+                this.x = x
+                this.y = y
+            }
+            subtract() {
+                console.log(this.x - this.y);
+            }
+        }
+        // 
+        let son = new Son(5, 3)
+        // 实例化调用父类函数
+        son.sum()
+        son.subtract()
+    //    注意事项
+    // 类没有变量提升
+    // 类里面的共有属性和方法一定要加this使用
+    </script>
+</body>
+
+</html>

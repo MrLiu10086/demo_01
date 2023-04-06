@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // new 新的意思
+
+        // 
+        // 声明对象或数组完整写法
+        let arr=new Array()
+         let obj=new Object()
+        //  简写
+        let a={}
+        let b=[]
+        //  new 实例化 时间对象
+        // 获取本地时间
+let date=new Date()
+// 获取指定时间
+let dat=new Date('1999-10-10')
+console.log(date);
+console.log(date.getMonth()+1);
+console.log("1"+("2"*3)+4);
+// console.log();
+// console.log(+ new Date('2023-2-1 12:00:00'));\
+let dangqian=+ new Date()
+let jianglai=+ new Date('2023-1-31 16:00:00')
+let count=(jianglai-dangqian)/1000
+// let d=parseInt(count/60/60/24)
+
+let h=parseInt(count/60/60%24)
+let m=parseInt(count/60%60)
+// let s=parseInt(count%60)
+console.log(m);
+// console.log(count);
+
+// 获取本地时间
+// 实例化后转换为整数类型
+console.log(new Date().toLocaleString());
+
+    </script>
+</body>
+</html>
